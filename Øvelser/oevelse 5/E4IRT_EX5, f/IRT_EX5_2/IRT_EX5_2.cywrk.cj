@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CyXmlSerializer>
+<!--This file is machine generated and read. It is not intended to be edited by hand.-->
+<!--Due to this, there is no schema for this file.-->
+<CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspcCustomData" version="4">
+<CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997 type_name="CyDesigner.Common.Base.CyCustomData" version="2">
+<userData>
+<dataGuid v="1b906a0f-a7b6-4e4d-a428-82f98b53cb35">
+<CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35 type_name="CyDesigner.Common.ProjMgmt.GUI.CyExplorerWindow+CyExplorerWindowState" version="3" SelectedTab="Source">
+<TreeKeys>
+<v>Source</v>
+<v>Components</v>
+<v>Output</v>
+</TreeKeys>
+<TreeStates>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="IRT_EX5_2\IRT_EX5_2\TopDesign">
+<ExpandedNodeIds>
+<v>IRT_EX5_2</v>
+<v>IRT_EX5_2\IRT_EX5_2</v>
+<v>IRT_EX5_2\IRT_EX5_2\TopDesign</v>
+<v>IRT_EX5_2\IRT_EX5_2\IRT_EX5_2.cydwr</v>
+<v>IRT_EX5_2\IRT_EX5_2\Header Files</v>
+<v>IRT_EX5_2\IRT_EX5_2\Source Files</v>
+<v>IRT_EX5_2\IRT_EX5_2\Source Files\main.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\ADC_DelSig_1</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\ADC_DelSig_1\ADC_DelSig_1.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\ADC_DelSig_1\ADC_DelSig_1.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\ADC_DelSig_1\ADC_DelSig_1_INT.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\ADC_DelSig_1\ADC_DelSig_1_PM.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\ADC_DelSig_1_Ext_CP_Clk</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\ADC_DelSig_1_Ext_CP_Clk\ADC_DelSig_1_Ext_CP_Clk.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\ADC_DelSig_1_Ext_CP_Clk\ADC_DelSig_1_Ext_CP_Clk.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\ADC_DelSig_1_IRQ</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\ADC_DelSig_1_IRQ\ADC_DelSig_1_IRQ.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\ADC_DelSig_1_IRQ\ADC_DelSig_1_IRQ.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\ADC_DelSig_1_theACLK</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\ADC_DelSig_1_theACLK\ADC_DelSig_1_theACLK.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\ADC_DelSig_1_theACLK\ADC_DelSig_1_theACLK.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Bootloadable_1</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Bootloadable_1\Bootloadable_1.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Bootloadable_1\Bootloadable_1.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Clock_1</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Clock_1\Clock_1.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Clock_1\Clock_1.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cy_boot</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cy_boot\cm3gcc.ld</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cy_boot\Cm3Iar.icf</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cy_boot\Cm3RealView.scat</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cy_boot\Cm3Start.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cy_boot\core_cm3.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cy_boot\core_cm3_psoc5.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cy_boot\core_cmFunc.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cy_boot\core_cmInstr.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cy_boot\CyBootAsmGnu.s</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cy_boot\CyBootAsmIar.s</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cy_boot\CyBootAsmRv.s</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cy_boot\CyDmac.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cy_boot\CyDmac.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cy_boot\CyFlash.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cy_boot\CyFlash.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cy_boot\CyLib.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cy_boot\CyLib.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cy_boot\cypins.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cy_boot\cyPm.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cy_boot\cyPm.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cy_boot\CySpc.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cy_boot\CySpc.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cy_boot\cytypes.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cy_boot\cyutils.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Diode_1</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Diode_1\Diode_1.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Diode_1\Diode_1.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Diode_1\Diode_1_aliases.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\DMA_1</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\DMA_1\DMA_1_dma.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\DMA_1\DMA_1_dma.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Filter</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Filter\Filter.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Filter\Filter.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Filter\Filter_Coefficients.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Filter\Filter_PM.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Filter\Filter_PVT.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Filter\Filter_PVT.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Filter\Filter_RAM_Data.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\isr</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\isr\isr.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\isr\isr.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Opamp_1</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Opamp_1\Opamp_1.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Opamp_1\Opamp_1.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Opamp_1\Opamp_1_PM.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Opamp_3</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Opamp_3\Opamp_3.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Opamp_3\Opamp_3.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Opamp_3\Opamp_3_PM.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\VDAC8_1</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\VDAC8_1\VDAC8_1.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\VDAC8_1\VDAC8_1.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\VDAC8_1\VDAC8_1_PM.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\VDAC8_2</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\VDAC8_2\VDAC8_2.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\VDAC8_2\VDAC8_2.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\VDAC8_2\VDAC8_2_PM.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Vin</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Vin\Vin.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Vin\Vin.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Vin\Vin_aliases.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Vout</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Vout\Vout.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Vout\Vout.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Vout\Vout_aliases.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Vref</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Vref\Vref.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Vref\Vref.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Vref\Vref_aliases.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cybootloader.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cybootloader.icf</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cydevice.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cydevice_trm.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cydevicegnu.inc</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cydevicegnu_trm.inc</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cydeviceiar.inc</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cydeviceiar_trm.inc</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cydevicerv.inc</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cydevicerv_trm.inc</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cydisabledsheets.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cyfitter.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cyfitter_cfg.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cyfitter_cfg.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cyfittergnu.inc</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cyfitteriar.inc</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cyfitterrv.inc</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cymetadata.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\project.h</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>IRT_EX5_2</v>
+<v>IRT_EX5_2\IRT_EX5_2</v>
+<v>IRT_EX5_2\IRT_EX5_2\TopDesign</v>
+<v>IRT_EX5_2\IRT_EX5_2\IRT_EX5_2.cydwr</v>
+<v>IRT_EX5_2\IRT_EX5_2\Header Files</v>
+<v>IRT_EX5_2\IRT_EX5_2\Source Files</v>
+<v>IRT_EX5_2\IRT_EX5_2\Source Files\main.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\ADC_DelSig_1</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\ADC_DelSig_1\ADC_DelSig_1.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\ADC_DelSig_1\ADC_DelSig_1.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\ADC_DelSig_1\ADC_DelSig_1_INT.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\ADC_DelSig_1\ADC_DelSig_1_PM.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\ADC_DelSig_1_Ext_CP_Clk</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\ADC_DelSig_1_Ext_CP_Clk\ADC_DelSig_1_Ext_CP_Clk.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\ADC_DelSig_1_Ext_CP_Clk\ADC_DelSig_1_Ext_CP_Clk.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\ADC_DelSig_1_IRQ</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\ADC_DelSig_1_IRQ\ADC_DelSig_1_IRQ.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\ADC_DelSig_1_IRQ\ADC_DelSig_1_IRQ.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\ADC_DelSig_1_theACLK</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\ADC_DelSig_1_theACLK\ADC_DelSig_1_theACLK.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\ADC_DelSig_1_theACLK\ADC_DelSig_1_theACLK.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Bootloadable_1</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Bootloadable_1\Bootloadable_1.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Bootloadable_1\Bootloadable_1.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Clock_1</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Clock_1\Clock_1.c</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\Clock_1\Clock_1.h</v>
+<v>IRT_EX5_2\IRT_EX5_2\Generated_Source\PSoC5\cy_boot</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>IRT_EX5_2</v>
+<v>IRT_EX5_2\IRT_EX5_2</v>
+<v>IRT_EX5_2\IRT_EX5_2\TopDesign</v>
+<v>IRT_EX5_2\IRT_EX5_2\TopDesign\TopDesign.cysch</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>IRT_EX5_2</v>
+<v>IRT_EX5_2\IRT_EX5_2</v>
+<v>IRT_EX5_2\IRT_EX5_2\TopDesign</v>
+<v>IRT_EX5_2\IRT_EX5_2\TopDesign\TopDesign.cysch</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>IRT_EX5_2</v>
+<v>IRT_EX5_2\IRT_EX5_2</v>
+<v>IRT_EX5_2\IRT_EX5_2\IRT_EX5_2.gpdsc</v>
+<v>IRT_EX5_2\IRT_EX5_2\IRT_EX5_2.rpt</v>
+<v>IRT_EX5_2\IRT_EX5_2\IRT_EX5_2_timing.html</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>IRT_EX5_2</v>
+<v>IRT_EX5_2\IRT_EX5_2</v>
+<v>IRT_EX5_2\IRT_EX5_2\IRT_EX5_2.gpdsc</v>
+<v>IRT_EX5_2\IRT_EX5_2\IRT_EX5_2.rpt</v>
+<v>IRT_EX5_2\IRT_EX5_2\IRT_EX5_2_timing.html</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStates>
+<TreeKeysV2>
+<v>Datasheet</v>
+</TreeKeysV2>
+<TreeStatesV2>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>IRT_EX5_2</v>
+<v>IRT_EX5_2\IRT_EX5_2</v>
+<v>IRT_EX5_2\IRT_EX5_2\PSoC 5 Architecture TRM</v>
+<v>IRT_EX5_2\IRT_EX5_2\CY8C58LP Family Datasheet</v>
+<v>IRT_EX5_2\IRT_EX5_2\System Reference Guides</v>
+<v>IRT_EX5_2\IRT_EX5_2\System Reference Guides\cy_boot_v4_11</v>
+<v>IRT_EX5_2\IRT_EX5_2\ADC_DelSig_v3_10.pdf</v>
+<v>IRT_EX5_2\IRT_EX5_2\Bootloadable_v1_20.pdf</v>
+<v>IRT_EX5_2\IRT_EX5_2\cy_clock_v2_20.pdf</v>
+<v>IRT_EX5_2\IRT_EX5_2\cy_dma_v1_70.pdf</v>
+<v>IRT_EX5_2\IRT_EX5_2\cy_isr_v1_70.pdf</v>
+<v>IRT_EX5_2\IRT_EX5_2\cy_pins_v2_5</v>
+<v>IRT_EX5_2\IRT_EX5_2\cy_pins_v2_5\cy_pins_v2_5.pdf</v>
+<v>IRT_EX5_2\IRT_EX5_2\cy_vref_v1_60.pdf</v>
+<v>IRT_EX5_2\IRT_EX5_2\Filter_v2_20.pdf</v>
+<v>IRT_EX5_2\IRT_EX5_2\OpAmp_v1_90</v>
+<v>IRT_EX5_2\IRT_EX5_2\OpAmp_v1_90\OpAmp_v1_90.pdf</v>
+<v>IRT_EX5_2\IRT_EX5_2\VDAC8_v1_90</v>
+<v>IRT_EX5_2\IRT_EX5_2\VDAC8_v1_90\VDAC8_v1_90.pdf</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>IRT_EX5_2</v>
+<v>IRT_EX5_2\IRT_EX5_2</v>
+<v>IRT_EX5_2\IRT_EX5_2\PSoC 5 Architecture TRM</v>
+<v>IRT_EX5_2\IRT_EX5_2\CY8C58LP Family Datasheet</v>
+<v>IRT_EX5_2\IRT_EX5_2\System Reference Guides</v>
+<v>IRT_EX5_2\IRT_EX5_2\System Reference Guides\cy_boot_v4_11</v>
+<v>IRT_EX5_2\IRT_EX5_2\ADC_DelSig_v3_10.pdf</v>
+<v>IRT_EX5_2\IRT_EX5_2\Bootloadable_v1_20.pdf</v>
+<v>IRT_EX5_2\IRT_EX5_2\cy_clock_v2_20.pdf</v>
+<v>IRT_EX5_2\IRT_EX5_2\cy_dma_v1_70.pdf</v>
+<v>IRT_EX5_2\IRT_EX5_2\cy_isr_v1_70.pdf</v>
+<v>IRT_EX5_2\IRT_EX5_2\cy_pins_v2_5</v>
+<v>IRT_EX5_2\IRT_EX5_2\cy_pins_v2_5\cy_pins_v2_5.pdf</v>
+<v>IRT_EX5_2\IRT_EX5_2\cy_vref_v1_60.pdf</v>
+<v>IRT_EX5_2\IRT_EX5_2\Filter_v2_20.pdf</v>
+<v>IRT_EX5_2\IRT_EX5_2\OpAmp_v1_90</v>
+<v>IRT_EX5_2\IRT_EX5_2\OpAmp_v1_90\OpAmp_v1_90.pdf</v>
+<v>IRT_EX5_2\IRT_EX5_2\VDAC8_v1_90</v>
+<v>IRT_EX5_2\IRT_EX5_2\VDAC8_v1_90\VDAC8_v1_90.pdf</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStatesV2>
+</CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
+</dataGuid>
+</userData>
+</CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
+<Unloaded />
+<OpenDocs>
+<name v=".\IRT_EX5_2.cydsn\IRT_EX5_2.cydwr" />
+<name v=".\IRT_EX5_2.cydsn\TopDesign\TopDesign.cysch" />
+</OpenDocs>
+<config v="" />
+<AutoUpdate v="true" />
+</CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
+</CyXmlSerializer>

@@ -1,0 +1,13 @@
+# IRT_EX5_1
+# 2015-03-22 15:25:04Z
+
+set_io "Dedicated_Output" iocell 3 6
+set_io "Diode_1(0)" iocell 3 5
+set_io "Vin(0)" iocell 0 1
+set_io "Vout(0)" iocell 1 2
+set_io "Vref(0)" iocell 0 0
+set_location "\ADC_DelSig_1:DSM\" dsmodcell -1 -1 0
+set_location "\Opamp_1:ABuf\" abufcell -1 -1 2
+set_location "\Opamp_3:ABuf\" abufcell -1 -1 1
+set_location "\VDAC8_1:viDAC8\" vidaccell -1 -1 3
+set_location "\VDAC8_2:viDAC8\" vidaccell -1 -1 0
