@@ -1,0 +1,8 @@
+--------------- Build Started: 03/22/2015 15:33:14 Project: IRT_EX6_2, Configuration: ARM GCC 4.7.3 Debug ---------------
+The code generation step is up to date.
+The compile step is up to date, no work needs to be done.
+The link step is up to date, no work needs to be done.
+cyelftool.exe -S "C:\Users\Jonas\Dropbox\IRT PSoC4 solutions\E4IRT_EX6\IRT_EX6_2\IRT_EX6_2.cydsn\CortexM3\ARM_GCC_473\Debug\IRT_EX6_2.elf"
+Flash used: 24824 of 262144 bytes (9.5 %).
+SRAM used: 21909 of 65536 bytes (33.4 %).
+--------------- Build Succeeded: 03/22/2015 15:33:15 ---------------

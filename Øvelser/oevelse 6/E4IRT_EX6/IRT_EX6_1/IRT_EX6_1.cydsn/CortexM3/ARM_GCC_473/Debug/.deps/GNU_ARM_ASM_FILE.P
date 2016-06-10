@@ -1,0 +1,10 @@
+C:/Users/Jonas/Dropbox/IRT\ PSoC4\ solutions/E4IRT_EX6/IRT_EX6_1/IRT_EX6_1.cydsn/CortexM3/ARM_GCC_473/Debug/CyBootAsmGnu.o : C:/Users/Jonas/Dropbox/IRT\ PSoC4\ solutions/E4IRT_EX6/IRT_EX6_1/IRT_EX6_1.cydsn/Generated_Source/PSoC5/cydevicegnu.inc C:/Users/Jonas/Dropbox/IRT\ PSoC4\ solutions/E4IRT_EX6/IRT_EX6_1/IRT_EX6_1.cydsn/Generated_Source/PSoC5/cydevicegnu_trm.inc C:/Users/Jonas/Dropbox/IRT\ PSoC4\ solutions/E4IRT_EX6/IRT_EX6_1/IRT_EX6_1.cydsn/Generated_Source/PSoC5/cyfittergnu.inc C:/Users/Jonas/Dropbox/IRT\ PSoC4\ solutions/E4IRT_EX6/IRT_EX6_1/IRT_EX6_1.cydsn/Generated_Source/PSoC5/CyBootAsmGnu.s 
+
+C:/Users/Jonas/Dropbox/IRT\ PSoC4\ solutions/E4IRT_EX6/IRT_EX6_1/IRT_EX6_1.cydsn/Generated_Source/PSoC5/cydevicegnu.inc : 
+
+C:/Users/Jonas/Dropbox/IRT\ PSoC4\ solutions/E4IRT_EX6/IRT_EX6_1/IRT_EX6_1.cydsn/Generated_Source/PSoC5/cydevicegnu_trm.inc : 
+
+C:/Users/Jonas/Dropbox/IRT\ PSoC4\ solutions/E4IRT_EX6/IRT_EX6_1/IRT_EX6_1.cydsn/Generated_Source/PSoC5/cyfittergnu.inc : 
+
+C:/Users/Jonas/Dropbox/IRT\ PSoC4\ solutions/E4IRT_EX6/IRT_EX6_1/IRT_EX6_1.cydsn/Generated_Source/PSoC5/CyBootAsmGnu.s : 
+

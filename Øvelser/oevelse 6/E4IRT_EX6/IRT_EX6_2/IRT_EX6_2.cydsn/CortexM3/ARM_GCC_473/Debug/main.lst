@@ -1,0 +1,905 @@
+ARM GAS  C:\Users\Jonas\AppData\Local\Temp\ccD5v1mD.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"main.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.global	i
+  19              		.bss
+  20              		.type	i, %object
+  21              		.size	i, 1
+  22              	i:
+  23 0000 00       		.space	1
+  24              		.section	.text.filterVDAC,"ax",%progbits
+  25              		.align	2
+  26              		.global	filterVDAC
+  27              		.thumb
+  28              		.thumb_func
+  29              		.type	filterVDAC, %function
+  30              	filterVDAC:
+  31              	.LFB56:
+  32              		.file 1 ".\\main.c"
+   1:.\main.c      **** /* ========================================
+   2:.\main.c      ****  *
+   3:.\main.c      ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\main.c      ****  * All Rights Reserved
+   5:.\main.c      ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\main.c      ****  *
+   7:.\main.c      ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\main.c      ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\main.c      ****  *
+  10:.\main.c      ****  * ========================================
+  11:.\main.c      **** */
+  12:.\main.c      **** #include <project.h>
+  13:.\main.c      **** 
+  14:.\main.c      **** #define DMA_1_BYTES_PER_BURST 1
+  15:.\main.c      **** #define DMA_1_REQUEST_PER_BURST 1
+  16:.\main.c      **** #define DMA_1_SRC_BASE (CYDEV_PERIPH_BASE)
+  17:.\main.c      **** #define DMA_1_DST_BASE (CYDEV_PERIPH_BASE)
+  18:.\main.c      **** 
+  19:.\main.c      **** uint8 i = 0; 
+  20:.\main.c      **** 
+  21:.\main.c      **** CY_ISR(filterVDAC)
+  22:.\main.c      **** {
+  33              		.loc 1 22 0
+  34              		.cfi_startproc
+  35              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\Jonas\AppData\Local\Temp\ccD5v1mD.s 			page 2
+
+
+  36              		@ frame_needed = 1, uses_anonymous_args = 0
+  37 0000 80B5     		push	{r7, lr}
+  38              	.LCFI0:
+  39              		.cfi_def_cfa_offset 8
+  40              		.cfi_offset 7, -8
+  41              		.cfi_offset 14, -4
+  42 0002 00AF     		add	r7, sp, #0
+  43              	.LCFI1:
+  44              		.cfi_def_cfa_register 7
+  23:.\main.c      **** 	VDAC8_1_Data = (Filter_HOLDAH_REG + 128);
+  45              		.loc 1 23 0
+  46 0004 45F68333 		movw	r3, #23427
+  47 0008 C4F20003 		movt	r3, 16384
+  48 000c 4CF2AA72 		movw	r2, #51114
+  49 0010 C4F20002 		movt	r2, 16384
+  50 0014 1278     		ldrb	r2, [r2, #0]
+  51 0016 D2B2     		uxtb	r2, r2
+  52 0018 A2F18002 		sub	r2, r2, #128
+  53 001c D2B2     		uxtb	r2, r2
+  54 001e 1A70     		strb	r2, [r3, #0]
+  24:.\main.c      ****     Diode_1_Write(i); 
+  55              		.loc 1 24 0
+  56 0020 40F20003 		movw	r3, #:lower16:i
+  57 0024 C0F20003 		movt	r3, #:upper16:i
+  58 0028 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+  59 002a 1846     		mov	r0, r3
+  60 002c FFF7FEFF 		bl	Diode_1_Write
+  25:.\main.c      ****     i = ~i; 
+  61              		.loc 1 25 0
+  62 0030 40F20003 		movw	r3, #:lower16:i
+  63 0034 C0F20003 		movt	r3, #:upper16:i
+  64 0038 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+  65 003a 6FEA0303 		mvn	r3, r3
+  66 003e DAB2     		uxtb	r2, r3
+  67 0040 40F20003 		movw	r3, #:lower16:i
+  68 0044 C0F20003 		movt	r3, #:upper16:i
+  69 0048 1A70     		strb	r2, [r3, #0]
+  26:.\main.c      **** }
+  70              		.loc 1 26 0
+  71 004a 80BD     		pop	{r7, pc}
+  72              		.cfi_endproc
+  73              	.LFE56:
+  74              		.size	filterVDAC, .-filterVDAC
+  75              		.section	.text.main,"ax",%progbits
+  76              		.align	2
+  77              		.global	main
+  78              		.thumb
+  79              		.thumb_func
+  80              		.type	main, %function
+  81              	main:
+  82              	.LFB57:
+  27:.\main.c      **** void setupDMA();
+  28:.\main.c      **** 
+  29:.\main.c      **** void main()
+  30:.\main.c      **** {
+  83              		.loc 1 30 0
+  84              		.cfi_startproc
+ARM GAS  C:\Users\Jonas\AppData\Local\Temp\ccD5v1mD.s 			page 3
+
+
+  85              		@ args = 0, pretend = 0, frame = 0
+  86              		@ frame_needed = 1, uses_anonymous_args = 0
+  87 0000 80B5     		push	{r7, lr}
+  88              	.LCFI2:
+  89              		.cfi_def_cfa_offset 8
+  90              		.cfi_offset 7, -8
+  91              		.cfi_offset 14, -4
+  92 0002 00AF     		add	r7, sp, #0
+  93              	.LCFI3:
+  94              		.cfi_def_cfa_register 7
+  31:.\main.c      ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  32:.\main.c      **** 	Opamp_1_Start();
+  95              		.loc 1 32 0
+  96 0004 FFF7FEFF 		bl	Opamp_1_Start
+  33:.\main.c      **** 	Opamp_3_Start();
+  97              		.loc 1 33 0
+  98 0008 FFF7FEFF 		bl	Opamp_3_Start
+  34:.\main.c      ****     Clock_1_Start(); 
+  99              		.loc 1 34 0
+ 100 000c FFF7FEFF 		bl	Clock_1_Start
+  35:.\main.c      **** 	ADC_DelSig_1_Start();
+ 101              		.loc 1 35 0
+ 102 0010 FFF7FEFF 		bl	ADC_DelSig_1_Start
+  36:.\main.c      **** 	ADC_DelSig_1_StartConvert();
+ 103              		.loc 1 36 0
+ 104 0014 FFF7FEFF 		bl	ADC_DelSig_1_StartConvert
+  37:.\main.c      **** 	VDAC8_1_Start();
+ 105              		.loc 1 37 0
+ 106 0018 FFF7FEFF 		bl	VDAC8_1_Start
+  38:.\main.c      **** 	VDAC8_2_Start();
+ 107              		.loc 1 38 0
+ 108 001c FFF7FEFF 		bl	VDAC8_2_Start
+  39:.\main.c      **** 	Filter_Start();
+ 109              		.loc 1 39 0
+ 110 0020 FFF7FEFF 		bl	Filter_Start
+  40:.\main.c      ****     
+  41:.\main.c      ****     setupDMA();
+ 111              		.loc 1 41 0
+ 112 0024 FFF7FEFF 		bl	setupDMA
+  42:.\main.c      ****     
+  43:.\main.c      ****     CyGlobalIntEnable;  /* Uncomment this line to enable global interrupts. */
+ 113              		.loc 1 43 0
+ 114              	@ 43 ".\main.c" 1
+ 115 0028 62B6     		CPSIE   i
+ 116              	@ 0 "" 2
+  44:.\main.c      ****     
+  45:.\main.c      ****     isr_StartEx(filterVDAC);
+ 117              		.loc 1 45 0
+ 118              		.thumb
+ 119 002a 40F20000 		movw	r0, #:lower16:filterVDAC
+ 120 002e C0F20000 		movt	r0, #:upper16:filterVDAC
+ 121 0032 FFF7FEFF 		bl	isr_StartEx
+ 122              	.L3:
+  46:.\main.c      ****     for(;;)
+  47:.\main.c      ****     {
+  48:.\main.c      **** 		/* Place your application code here. */
+  49:.\main.c      **** 		
+ARM GAS  C:\Users\Jonas\AppData\Local\Temp\ccD5v1mD.s 			page 4
+
+
+  50:.\main.c      ****     }
+ 123              		.loc 1 50 0 discriminator 1
+ 124 0036 FEE7     		b	.L3
+ 125              		.cfi_endproc
+ 126              	.LFE57:
+ 127              		.size	main, .-main
+ 128              		.section	.text.setupDMA,"ax",%progbits
+ 129              		.align	2
+ 130              		.global	setupDMA
+ 131              		.thumb
+ 132              		.thumb_func
+ 133              		.type	setupDMA, %function
+ 134              	setupDMA:
+ 135              	.LFB58:
+  51:.\main.c      **** }
+  52:.\main.c      **** 
+  53:.\main.c      **** 
+  54:.\main.c      **** void setupDMA(){
+ 136              		.loc 1 54 0
+ 137              		.cfi_startproc
+ 138              		@ args = 0, pretend = 0, frame = 8
+ 139              		@ frame_needed = 1, uses_anonymous_args = 0
+ 140 0000 80B5     		push	{r7, lr}
+ 141              	.LCFI4:
+ 142              		.cfi_def_cfa_offset 8
+ 143              		.cfi_offset 7, -8
+ 144              		.cfi_offset 14, -4
+ 145 0002 82B0     		sub	sp, sp, #8
+ 146              	.LCFI5:
+ 147              		.cfi_def_cfa_offset 16
+ 148 0004 00AF     		add	r7, sp, #0
+ 149              	.LCFI6:
+ 150              		.cfi_def_cfa_register 7
+  55:.\main.c      **** uint8 DMA_1_Chan;
+  56:.\main.c      **** uint8 DMA_1_TD[1];
+  57:.\main.c      **** 
+  58:.\main.c      **** DMA_1_Chan = DMA_1_DmaInitialize(DMA_1_BYTES_PER_BURST, DMA_1_REQUEST_PER_BURST, 
+ 151              		.loc 1 58 0
+ 152 0006 4FF00100 		mov	r0, #1
+ 153 000a 4FF00101 		mov	r1, #1
+ 154 000e 4FF48042 		mov	r2, #16384
+ 155 0012 4FF48043 		mov	r3, #16384
+ 156 0016 FFF7FEFF 		bl	DMA_1_DmaInitialize
+ 157 001a 0346     		mov	r3, r0
+ 158 001c FB71     		strb	r3, [r7, #7]
+  59:.\main.c      ****     HI16(DMA_1_SRC_BASE), HI16(DMA_1_DST_BASE));
+  60:.\main.c      **** 
+  61:.\main.c      **** DMA_1_TD[0] = CyDmaTdAllocate();
+ 159              		.loc 1 61 0
+ 160 001e FFF7FEFF 		bl	CyDmaTdAllocate
+ 161 0022 0346     		mov	r3, r0
+ 162 0024 3B71     		strb	r3, [r7, #4]
+  62:.\main.c      **** 
+  63:.\main.c      **** CyDmaTdSetConfiguration(DMA_1_TD[0], 1, DMA_INVALID_TD, 0);
+ 163              		.loc 1 63 0
+ 164 0026 3B79     		ldrb	r3, [r7, #4]	@ zero_extendqisi2
+ 165 0028 1846     		mov	r0, r3
+ARM GAS  C:\Users\Jonas\AppData\Local\Temp\ccD5v1mD.s 			page 5
+
+
+ 166 002a 4FF00101 		mov	r1, #1
+ 167 002e 4FF0FF02 		mov	r2, #255
+ 168 0032 4FF00003 		mov	r3, #0
+ 169 0036 FFF7FEFF 		bl	CyDmaTdSetConfiguration
+  64:.\main.c      **** 
+  65:.\main.c      **** CyDmaTdSetAddress(DMA_1_TD[0], LO16((uint32)ADC_DelSig_1_DEC_SAMP_PTR), LO16((uint32)Filter_STAGEAH
+ 170              		.loc 1 65 0
+ 171 003a 3B79     		ldrb	r3, [r7, #4]	@ zero_extendqisi2
+ 172 003c 1846     		mov	r0, r3
+ 173 003e 44F61061 		movw	r1, #19984
+ 174 0042 4CF2A272 		movw	r2, #51106
+ 175 0046 FFF7FEFF 		bl	CyDmaTdSetAddress
+  66:.\main.c      **** 
+  67:.\main.c      **** CyDmaChSetInitialTd(DMA_1_Chan, DMA_1_TD[0]);
+ 176              		.loc 1 67 0
+ 177 004a 3B79     		ldrb	r3, [r7, #4]	@ zero_extendqisi2
+ 178 004c FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 179 004e 1046     		mov	r0, r2
+ 180 0050 1946     		mov	r1, r3
+ 181 0052 FFF7FEFF 		bl	CyDmaChSetInitialTd
+  68:.\main.c      **** 
+  69:.\main.c      **** CyDmaChEnable(DMA_1_Chan, 1);
+ 182              		.loc 1 69 0
+ 183 0056 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 184 0058 1846     		mov	r0, r3
+ 185 005a 4FF00101 		mov	r1, #1
+ 186 005e FFF7FEFF 		bl	CyDmaChEnable
+  70:.\main.c      **** 
+  71:.\main.c      **** }
+ 187              		.loc 1 71 0
+ 188 0062 07F10807 		add	r7, r7, #8
+ 189 0066 BD46     		mov	sp, r7
+ 190 0068 80BD     		pop	{r7, pc}
+ 191              		.cfi_endproc
+ 192              	.LFE58:
+ 193              		.size	setupDMA, .-setupDMA
+ 194 006a 00BF     		.text
+ 195              	.Letext0:
+ 196              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.0\\psoc creator\\import\\gnu_cs\\arm\\4
+ 197              		.file 3 "./Generated_Source/PSoC5/cytypes.h"
+ 198              		.file 4 "./Generated_Source/PSoC5/core_cm3.h"
+ 199              		.section	.debug_info,"",%progbits
+ 200              	.Ldebug_info0:
+ 201 0000 58010000 		.4byte	0x158
+ 202 0004 0200     		.2byte	0x2
+ 203 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 204 000a 04       		.byte	0x4
+ 205 000b 01       		.uleb128 0x1
+ 206 000c 27000000 		.4byte	.LASF21
+ 207 0010 01       		.byte	0x1
+ 208 0011 88000000 		.4byte	.LASF22
+ 209 0015 EB000000 		.4byte	.LASF23
+ 210 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 211 001d 00000000 		.4byte	0
+ 212 0021 00000000 		.4byte	0
+ 213 0025 00000000 		.4byte	.Ldebug_line0
+ 214 0029 02       		.uleb128 0x2
+ARM GAS  C:\Users\Jonas\AppData\Local\Temp\ccD5v1mD.s 			page 6
+
+
+ 215 002a 01       		.byte	0x1
+ 216 002b 06       		.byte	0x6
+ 217 002c 67010000 		.4byte	.LASF0
+ 218 0030 02       		.uleb128 0x2
+ 219 0031 01       		.byte	0x1
+ 220 0032 08       		.byte	0x8
+ 221 0033 CF000000 		.4byte	.LASF1
+ 222 0037 02       		.uleb128 0x2
+ 223 0038 02       		.byte	0x2
+ 224 0039 05       		.byte	0x5
+ 225 003a 79010000 		.4byte	.LASF2
+ 226 003e 02       		.uleb128 0x2
+ 227 003f 02       		.byte	0x2
+ 228 0040 07       		.byte	0x7
+ 229 0041 A8000000 		.4byte	.LASF3
+ 230 0045 03       		.uleb128 0x3
+ 231 0046 8A010000 		.4byte	.LASF9
+ 232 004a 02       		.byte	0x2
+ 233 004b 4F       		.byte	0x4f
+ 234 004c 50000000 		.4byte	0x50
+ 235 0050 02       		.uleb128 0x2
+ 236 0051 04       		.byte	0x4
+ 237 0052 05       		.byte	0x5
+ 238 0053 51010000 		.4byte	.LASF4
+ 239 0057 02       		.uleb128 0x2
+ 240 0058 04       		.byte	0x4
+ 241 0059 07       		.byte	0x7
+ 242 005a 76000000 		.4byte	.LASF5
+ 243 005e 02       		.uleb128 0x2
+ 244 005f 08       		.byte	0x8
+ 245 0060 05       		.byte	0x5
+ 246 0061 00000000 		.4byte	.LASF6
+ 247 0065 02       		.uleb128 0x2
+ 248 0066 08       		.byte	0x8
+ 249 0067 07       		.byte	0x7
+ 250 0068 91000000 		.4byte	.LASF7
+ 251 006c 04       		.uleb128 0x4
+ 252 006d 04       		.byte	0x4
+ 253 006e 05       		.byte	0x5
+ 254 006f 696E7400 		.ascii	"int\000"
+ 255 0073 02       		.uleb128 0x2
+ 256 0074 04       		.byte	0x4
+ 257 0075 07       		.byte	0x7
+ 258 0076 15000000 		.4byte	.LASF8
+ 259 007a 03       		.uleb128 0x3
+ 260 007b 70000000 		.4byte	.LASF10
+ 261 007f 03       		.byte	0x3
+ 262 0080 5B       		.byte	0x5b
+ 263 0081 30000000 		.4byte	0x30
+ 264 0085 03       		.uleb128 0x3
+ 265 0086 83010000 		.4byte	.LASF11
+ 266 008a 03       		.byte	0x3
+ 267 008b 5C       		.byte	0x5c
+ 268 008c 3E000000 		.4byte	0x3e
+ 269 0090 03       		.uleb128 0x3
+ 270 0091 0E000000 		.4byte	.LASF12
+ 271 0095 03       		.byte	0x3
+ARM GAS  C:\Users\Jonas\AppData\Local\Temp\ccD5v1mD.s 			page 7
+
+
+ 272 0096 5D       		.byte	0x5d
+ 273 0097 57000000 		.4byte	0x57
+ 274 009b 02       		.uleb128 0x2
+ 275 009c 04       		.byte	0x4
+ 276 009d 04       		.byte	0x4
+ 277 009e 73010000 		.4byte	.LASF13
+ 278 00a2 02       		.uleb128 0x2
+ 279 00a3 08       		.byte	0x8
+ 280 00a4 04       		.byte	0x4
+ 281 00a5 4A010000 		.4byte	.LASF14
+ 282 00a9 02       		.uleb128 0x2
+ 283 00aa 01       		.byte	0x1
+ 284 00ab 08       		.byte	0x8
+ 285 00ac DD000000 		.4byte	.LASF15
+ 286 00b0 03       		.uleb128 0x3
+ 287 00b1 3A010000 		.4byte	.LASF16
+ 288 00b5 03       		.byte	0x3
+ 289 00b6 F0       		.byte	0xf0
+ 290 00b7 BB000000 		.4byte	0xbb
+ 291 00bb 05       		.uleb128 0x5
+ 292 00bc 7A000000 		.4byte	0x7a
+ 293 00c0 02       		.uleb128 0x2
+ 294 00c1 04       		.byte	0x4
+ 295 00c2 07       		.byte	0x7
+ 296 00c3 92010000 		.4byte	.LASF17
+ 297 00c7 06       		.uleb128 0x6
+ 298 00c8 01       		.byte	0x1
+ 299 00c9 C4000000 		.4byte	.LASF24
+ 300 00cd 01       		.byte	0x1
+ 301 00ce 15       		.byte	0x15
+ 302 00cf 01       		.byte	0x1
+ 303 00d0 00000000 		.4byte	.LFB56
+ 304 00d4 4C000000 		.4byte	.LFE56
+ 305 00d8 00000000 		.4byte	.LLST0
+ 306 00dc 01       		.byte	0x1
+ 307 00dd 07       		.uleb128 0x7
+ 308 00de 01       		.byte	0x1
+ 309 00df 22000000 		.4byte	.LASF25
+ 310 00e3 01       		.byte	0x1
+ 311 00e4 1D       		.byte	0x1d
+ 312 00e5 00000000 		.4byte	.LFB57
+ 313 00e9 38000000 		.4byte	.LFE57
+ 314 00ed 2C000000 		.4byte	.LLST1
+ 315 00f1 01       		.byte	0x1
+ 316 00f2 08       		.uleb128 0x8
+ 317 00f3 01       		.byte	0x1
+ 318 00f4 E2000000 		.4byte	.LASF26
+ 319 00f8 01       		.byte	0x1
+ 320 00f9 36       		.byte	0x36
+ 321 00fa 00000000 		.4byte	.LFB58
+ 322 00fe 6A000000 		.4byte	.LFE58
+ 323 0102 58000000 		.4byte	.LLST2
+ 324 0106 01       		.byte	0x1
+ 325 0107 28010000 		.4byte	0x128
+ 326 010b 09       		.uleb128 0x9
+ 327 010c 3F010000 		.4byte	.LASF18
+ 328 0110 01       		.byte	0x1
+ARM GAS  C:\Users\Jonas\AppData\Local\Temp\ccD5v1mD.s 			page 8
+
+
+ 329 0111 37       		.byte	0x37
+ 330 0112 7A000000 		.4byte	0x7a
+ 331 0116 02       		.byte	0x2
+ 332 0117 91       		.byte	0x91
+ 333 0118 77       		.sleb128 -9
+ 334 0119 09       		.uleb128 0x9
+ 335 011a BB000000 		.4byte	.LASF19
+ 336 011e 01       		.byte	0x1
+ 337 011f 38       		.byte	0x38
+ 338 0120 28010000 		.4byte	0x128
+ 339 0124 02       		.byte	0x2
+ 340 0125 91       		.byte	0x91
+ 341 0126 74       		.sleb128 -12
+ 342 0127 00       		.byte	0
+ 343 0128 0A       		.uleb128 0xa
+ 344 0129 7A000000 		.4byte	0x7a
+ 345 012d 38010000 		.4byte	0x138
+ 346 0131 0B       		.uleb128 0xb
+ 347 0132 C0000000 		.4byte	0xc0
+ 348 0136 00       		.byte	0
+ 349 0137 00       		.byte	0
+ 350 0138 0C       		.uleb128 0xc
+ 351 0139 5A010000 		.4byte	.LASF20
+ 352 013d 04       		.byte	0x4
+ 353 013e 1606     		.2byte	0x616
+ 354 0140 46010000 		.4byte	0x146
+ 355 0144 01       		.byte	0x1
+ 356 0145 01       		.byte	0x1
+ 357 0146 05       		.uleb128 0x5
+ 358 0147 45000000 		.4byte	0x45
+ 359 014b 0D       		.uleb128 0xd
+ 360 014c 6900     		.ascii	"i\000"
+ 361 014e 01       		.byte	0x1
+ 362 014f 13       		.byte	0x13
+ 363 0150 7A000000 		.4byte	0x7a
+ 364 0154 01       		.byte	0x1
+ 365 0155 05       		.byte	0x5
+ 366 0156 03       		.byte	0x3
+ 367 0157 00000000 		.4byte	i
+ 368 015b 00       		.byte	0
+ 369              		.section	.debug_abbrev,"",%progbits
+ 370              	.Ldebug_abbrev0:
+ 371 0000 01       		.uleb128 0x1
+ 372 0001 11       		.uleb128 0x11
+ 373 0002 01       		.byte	0x1
+ 374 0003 25       		.uleb128 0x25
+ 375 0004 0E       		.uleb128 0xe
+ 376 0005 13       		.uleb128 0x13
+ 377 0006 0B       		.uleb128 0xb
+ 378 0007 03       		.uleb128 0x3
+ 379 0008 0E       		.uleb128 0xe
+ 380 0009 1B       		.uleb128 0x1b
+ 381 000a 0E       		.uleb128 0xe
+ 382 000b 55       		.uleb128 0x55
+ 383 000c 06       		.uleb128 0x6
+ 384 000d 11       		.uleb128 0x11
+ 385 000e 01       		.uleb128 0x1
+ARM GAS  C:\Users\Jonas\AppData\Local\Temp\ccD5v1mD.s 			page 9
+
+
+ 386 000f 52       		.uleb128 0x52
+ 387 0010 01       		.uleb128 0x1
+ 388 0011 10       		.uleb128 0x10
+ 389 0012 06       		.uleb128 0x6
+ 390 0013 00       		.byte	0
+ 391 0014 00       		.byte	0
+ 392 0015 02       		.uleb128 0x2
+ 393 0016 24       		.uleb128 0x24
+ 394 0017 00       		.byte	0
+ 395 0018 0B       		.uleb128 0xb
+ 396 0019 0B       		.uleb128 0xb
+ 397 001a 3E       		.uleb128 0x3e
+ 398 001b 0B       		.uleb128 0xb
+ 399 001c 03       		.uleb128 0x3
+ 400 001d 0E       		.uleb128 0xe
+ 401 001e 00       		.byte	0
+ 402 001f 00       		.byte	0
+ 403 0020 03       		.uleb128 0x3
+ 404 0021 16       		.uleb128 0x16
+ 405 0022 00       		.byte	0
+ 406 0023 03       		.uleb128 0x3
+ 407 0024 0E       		.uleb128 0xe
+ 408 0025 3A       		.uleb128 0x3a
+ 409 0026 0B       		.uleb128 0xb
+ 410 0027 3B       		.uleb128 0x3b
+ 411 0028 0B       		.uleb128 0xb
+ 412 0029 49       		.uleb128 0x49
+ 413 002a 13       		.uleb128 0x13
+ 414 002b 00       		.byte	0
+ 415 002c 00       		.byte	0
+ 416 002d 04       		.uleb128 0x4
+ 417 002e 24       		.uleb128 0x24
+ 418 002f 00       		.byte	0
+ 419 0030 0B       		.uleb128 0xb
+ 420 0031 0B       		.uleb128 0xb
+ 421 0032 3E       		.uleb128 0x3e
+ 422 0033 0B       		.uleb128 0xb
+ 423 0034 03       		.uleb128 0x3
+ 424 0035 08       		.uleb128 0x8
+ 425 0036 00       		.byte	0
+ 426 0037 00       		.byte	0
+ 427 0038 05       		.uleb128 0x5
+ 428 0039 35       		.uleb128 0x35
+ 429 003a 00       		.byte	0
+ 430 003b 49       		.uleb128 0x49
+ 431 003c 13       		.uleb128 0x13
+ 432 003d 00       		.byte	0
+ 433 003e 00       		.byte	0
+ 434 003f 06       		.uleb128 0x6
+ 435 0040 2E       		.uleb128 0x2e
+ 436 0041 00       		.byte	0
+ 437 0042 3F       		.uleb128 0x3f
+ 438 0043 0C       		.uleb128 0xc
+ 439 0044 03       		.uleb128 0x3
+ 440 0045 0E       		.uleb128 0xe
+ 441 0046 3A       		.uleb128 0x3a
+ 442 0047 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Jonas\AppData\Local\Temp\ccD5v1mD.s 			page 10
+
+
+ 443 0048 3B       		.uleb128 0x3b
+ 444 0049 0B       		.uleb128 0xb
+ 445 004a 27       		.uleb128 0x27
+ 446 004b 0C       		.uleb128 0xc
+ 447 004c 11       		.uleb128 0x11
+ 448 004d 01       		.uleb128 0x1
+ 449 004e 12       		.uleb128 0x12
+ 450 004f 01       		.uleb128 0x1
+ 451 0050 40       		.uleb128 0x40
+ 452 0051 06       		.uleb128 0x6
+ 453 0052 9642     		.uleb128 0x2116
+ 454 0054 0C       		.uleb128 0xc
+ 455 0055 00       		.byte	0
+ 456 0056 00       		.byte	0
+ 457 0057 07       		.uleb128 0x7
+ 458 0058 2E       		.uleb128 0x2e
+ 459 0059 00       		.byte	0
+ 460 005a 3F       		.uleb128 0x3f
+ 461 005b 0C       		.uleb128 0xc
+ 462 005c 03       		.uleb128 0x3
+ 463 005d 0E       		.uleb128 0xe
+ 464 005e 3A       		.uleb128 0x3a
+ 465 005f 0B       		.uleb128 0xb
+ 466 0060 3B       		.uleb128 0x3b
+ 467 0061 0B       		.uleb128 0xb
+ 468 0062 11       		.uleb128 0x11
+ 469 0063 01       		.uleb128 0x1
+ 470 0064 12       		.uleb128 0x12
+ 471 0065 01       		.uleb128 0x1
+ 472 0066 40       		.uleb128 0x40
+ 473 0067 06       		.uleb128 0x6
+ 474 0068 9642     		.uleb128 0x2116
+ 475 006a 0C       		.uleb128 0xc
+ 476 006b 00       		.byte	0
+ 477 006c 00       		.byte	0
+ 478 006d 08       		.uleb128 0x8
+ 479 006e 2E       		.uleb128 0x2e
+ 480 006f 01       		.byte	0x1
+ 481 0070 3F       		.uleb128 0x3f
+ 482 0071 0C       		.uleb128 0xc
+ 483 0072 03       		.uleb128 0x3
+ 484 0073 0E       		.uleb128 0xe
+ 485 0074 3A       		.uleb128 0x3a
+ 486 0075 0B       		.uleb128 0xb
+ 487 0076 3B       		.uleb128 0x3b
+ 488 0077 0B       		.uleb128 0xb
+ 489 0078 11       		.uleb128 0x11
+ 490 0079 01       		.uleb128 0x1
+ 491 007a 12       		.uleb128 0x12
+ 492 007b 01       		.uleb128 0x1
+ 493 007c 40       		.uleb128 0x40
+ 494 007d 06       		.uleb128 0x6
+ 495 007e 9642     		.uleb128 0x2116
+ 496 0080 0C       		.uleb128 0xc
+ 497 0081 01       		.uleb128 0x1
+ 498 0082 13       		.uleb128 0x13
+ 499 0083 00       		.byte	0
+ARM GAS  C:\Users\Jonas\AppData\Local\Temp\ccD5v1mD.s 			page 11
+
+
+ 500 0084 00       		.byte	0
+ 501 0085 09       		.uleb128 0x9
+ 502 0086 34       		.uleb128 0x34
+ 503 0087 00       		.byte	0
+ 504 0088 03       		.uleb128 0x3
+ 505 0089 0E       		.uleb128 0xe
+ 506 008a 3A       		.uleb128 0x3a
+ 507 008b 0B       		.uleb128 0xb
+ 508 008c 3B       		.uleb128 0x3b
+ 509 008d 0B       		.uleb128 0xb
+ 510 008e 49       		.uleb128 0x49
+ 511 008f 13       		.uleb128 0x13
+ 512 0090 02       		.uleb128 0x2
+ 513 0091 0A       		.uleb128 0xa
+ 514 0092 00       		.byte	0
+ 515 0093 00       		.byte	0
+ 516 0094 0A       		.uleb128 0xa
+ 517 0095 01       		.uleb128 0x1
+ 518 0096 01       		.byte	0x1
+ 519 0097 49       		.uleb128 0x49
+ 520 0098 13       		.uleb128 0x13
+ 521 0099 01       		.uleb128 0x1
+ 522 009a 13       		.uleb128 0x13
+ 523 009b 00       		.byte	0
+ 524 009c 00       		.byte	0
+ 525 009d 0B       		.uleb128 0xb
+ 526 009e 21       		.uleb128 0x21
+ 527 009f 00       		.byte	0
+ 528 00a0 49       		.uleb128 0x49
+ 529 00a1 13       		.uleb128 0x13
+ 530 00a2 2F       		.uleb128 0x2f
+ 531 00a3 0B       		.uleb128 0xb
+ 532 00a4 00       		.byte	0
+ 533 00a5 00       		.byte	0
+ 534 00a6 0C       		.uleb128 0xc
+ 535 00a7 34       		.uleb128 0x34
+ 536 00a8 00       		.byte	0
+ 537 00a9 03       		.uleb128 0x3
+ 538 00aa 0E       		.uleb128 0xe
+ 539 00ab 3A       		.uleb128 0x3a
+ 540 00ac 0B       		.uleb128 0xb
+ 541 00ad 3B       		.uleb128 0x3b
+ 542 00ae 05       		.uleb128 0x5
+ 543 00af 49       		.uleb128 0x49
+ 544 00b0 13       		.uleb128 0x13
+ 545 00b1 3F       		.uleb128 0x3f
+ 546 00b2 0C       		.uleb128 0xc
+ 547 00b3 3C       		.uleb128 0x3c
+ 548 00b4 0C       		.uleb128 0xc
+ 549 00b5 00       		.byte	0
+ 550 00b6 00       		.byte	0
+ 551 00b7 0D       		.uleb128 0xd
+ 552 00b8 34       		.uleb128 0x34
+ 553 00b9 00       		.byte	0
+ 554 00ba 03       		.uleb128 0x3
+ 555 00bb 08       		.uleb128 0x8
+ 556 00bc 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\Jonas\AppData\Local\Temp\ccD5v1mD.s 			page 12
+
+
+ 557 00bd 0B       		.uleb128 0xb
+ 558 00be 3B       		.uleb128 0x3b
+ 559 00bf 0B       		.uleb128 0xb
+ 560 00c0 49       		.uleb128 0x49
+ 561 00c1 13       		.uleb128 0x13
+ 562 00c2 3F       		.uleb128 0x3f
+ 563 00c3 0C       		.uleb128 0xc
+ 564 00c4 02       		.uleb128 0x2
+ 565 00c5 0A       		.uleb128 0xa
+ 566 00c6 00       		.byte	0
+ 567 00c7 00       		.byte	0
+ 568 00c8 00       		.byte	0
+ 569              		.section	.debug_loc,"",%progbits
+ 570              	.Ldebug_loc0:
+ 571              	.LLST0:
+ 572 0000 00000000 		.4byte	.LFB56
+ 573 0004 02000000 		.4byte	.LCFI0
+ 574 0008 0200     		.2byte	0x2
+ 575 000a 7D       		.byte	0x7d
+ 576 000b 00       		.sleb128 0
+ 577 000c 02000000 		.4byte	.LCFI0
+ 578 0010 04000000 		.4byte	.LCFI1
+ 579 0014 0200     		.2byte	0x2
+ 580 0016 7D       		.byte	0x7d
+ 581 0017 08       		.sleb128 8
+ 582 0018 04000000 		.4byte	.LCFI1
+ 583 001c 4C000000 		.4byte	.LFE56
+ 584 0020 0200     		.2byte	0x2
+ 585 0022 77       		.byte	0x77
+ 586 0023 08       		.sleb128 8
+ 587 0024 00000000 		.4byte	0
+ 588 0028 00000000 		.4byte	0
+ 589              	.LLST1:
+ 590 002c 00000000 		.4byte	.LFB57
+ 591 0030 02000000 		.4byte	.LCFI2
+ 592 0034 0200     		.2byte	0x2
+ 593 0036 7D       		.byte	0x7d
+ 594 0037 00       		.sleb128 0
+ 595 0038 02000000 		.4byte	.LCFI2
+ 596 003c 04000000 		.4byte	.LCFI3
+ 597 0040 0200     		.2byte	0x2
+ 598 0042 7D       		.byte	0x7d
+ 599 0043 08       		.sleb128 8
+ 600 0044 04000000 		.4byte	.LCFI3
+ 601 0048 38000000 		.4byte	.LFE57
+ 602 004c 0200     		.2byte	0x2
+ 603 004e 77       		.byte	0x77
+ 604 004f 08       		.sleb128 8
+ 605 0050 00000000 		.4byte	0
+ 606 0054 00000000 		.4byte	0
+ 607              	.LLST2:
+ 608 0058 00000000 		.4byte	.LFB58
+ 609 005c 02000000 		.4byte	.LCFI4
+ 610 0060 0200     		.2byte	0x2
+ 611 0062 7D       		.byte	0x7d
+ 612 0063 00       		.sleb128 0
+ 613 0064 02000000 		.4byte	.LCFI4
+ARM GAS  C:\Users\Jonas\AppData\Local\Temp\ccD5v1mD.s 			page 13
+
+
+ 614 0068 04000000 		.4byte	.LCFI5
+ 615 006c 0200     		.2byte	0x2
+ 616 006e 7D       		.byte	0x7d
+ 617 006f 08       		.sleb128 8
+ 618 0070 04000000 		.4byte	.LCFI5
+ 619 0074 06000000 		.4byte	.LCFI6
+ 620 0078 0200     		.2byte	0x2
+ 621 007a 7D       		.byte	0x7d
+ 622 007b 10       		.sleb128 16
+ 623 007c 06000000 		.4byte	.LCFI6
+ 624 0080 6A000000 		.4byte	.LFE58
+ 625 0084 0200     		.2byte	0x2
+ 626 0086 77       		.byte	0x77
+ 627 0087 10       		.sleb128 16
+ 628 0088 00000000 		.4byte	0
+ 629 008c 00000000 		.4byte	0
+ 630              		.section	.debug_aranges,"",%progbits
+ 631 0000 2C000000 		.4byte	0x2c
+ 632 0004 0200     		.2byte	0x2
+ 633 0006 00000000 		.4byte	.Ldebug_info0
+ 634 000a 04       		.byte	0x4
+ 635 000b 00       		.byte	0
+ 636 000c 0000     		.2byte	0
+ 637 000e 0000     		.2byte	0
+ 638 0010 00000000 		.4byte	.LFB56
+ 639 0014 4C000000 		.4byte	.LFE56-.LFB56
+ 640 0018 00000000 		.4byte	.LFB57
+ 641 001c 38000000 		.4byte	.LFE57-.LFB57
+ 642 0020 00000000 		.4byte	.LFB58
+ 643 0024 6A000000 		.4byte	.LFE58-.LFB58
+ 644 0028 00000000 		.4byte	0
+ 645 002c 00000000 		.4byte	0
+ 646              		.section	.debug_ranges,"",%progbits
+ 647              	.Ldebug_ranges0:
+ 648 0000 00000000 		.4byte	.LFB56
+ 649 0004 4C000000 		.4byte	.LFE56
+ 650 0008 00000000 		.4byte	.LFB57
+ 651 000c 38000000 		.4byte	.LFE57
+ 652 0010 00000000 		.4byte	.LFB58
+ 653 0014 6A000000 		.4byte	.LFE58
+ 654 0018 00000000 		.4byte	0
+ 655 001c 00000000 		.4byte	0
+ 656              		.section	.debug_line,"",%progbits
+ 657              	.Ldebug_line0:
+ 658 0000 47010000 		.section	.debug_str,"MS",%progbits,1
+ 658      0200F900 
+ 658      00000201 
+ 658      FB0E0D00 
+ 658      01010101 
+ 659              	.LASF6:
+ 660 0000 6C6F6E67 		.ascii	"long long int\000"
+ 660      206C6F6E 
+ 660      6720696E 
+ 660      7400
+ 661              	.LASF12:
+ 662 000e 75696E74 		.ascii	"uint32\000"
+ 662      333200
+ARM GAS  C:\Users\Jonas\AppData\Local\Temp\ccD5v1mD.s 			page 14
+
+
+ 663              	.LASF8:
+ 664 0015 756E7369 		.ascii	"unsigned int\000"
+ 664      676E6564 
+ 664      20696E74 
+ 664      00
+ 665              	.LASF25:
+ 666 0022 6D61696E 		.ascii	"main\000"
+ 666      00
+ 667              	.LASF21:
+ 668 0027 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 668      4320342E 
+ 668      372E3320 
+ 668      32303133 
+ 668      30333132 
+ 669 005a 616E6368 		.ascii	"anch revision 196615]\000"
+ 669      20726576 
+ 669      6973696F 
+ 669      6E203139 
+ 669      36363135 
+ 670              	.LASF10:
+ 671 0070 75696E74 		.ascii	"uint8\000"
+ 671      3800
+ 672              	.LASF5:
+ 673 0076 6C6F6E67 		.ascii	"long unsigned int\000"
+ 673      20756E73 
+ 673      69676E65 
+ 673      6420696E 
+ 673      7400
+ 674              	.LASF22:
+ 675 0088 2E5C6D61 		.ascii	".\\main.c\000"
+ 675      696E2E63 
+ 675      00
+ 676              	.LASF7:
+ 677 0091 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 677      206C6F6E 
+ 677      6720756E 
+ 677      7369676E 
+ 677      65642069 
+ 678              	.LASF3:
+ 679 00a8 73686F72 		.ascii	"short unsigned int\000"
+ 679      7420756E 
+ 679      7369676E 
+ 679      65642069 
+ 679      6E7400
+ 680              	.LASF19:
+ 681 00bb 444D415F 		.ascii	"DMA_1_TD\000"
+ 681      315F5444 
+ 681      00
+ 682              	.LASF24:
+ 683 00c4 66696C74 		.ascii	"filterVDAC\000"
+ 683      65725644 
+ 683      414300
+ 684              	.LASF1:
+ 685 00cf 756E7369 		.ascii	"unsigned char\000"
+ 685      676E6564 
+ 685      20636861 
+ 685      7200
+ARM GAS  C:\Users\Jonas\AppData\Local\Temp\ccD5v1mD.s 			page 15
+
+
+ 686              	.LASF15:
+ 687 00dd 63686172 		.ascii	"char\000"
+ 687      00
+ 688              	.LASF26:
+ 689 00e2 73657475 		.ascii	"setupDMA\000"
+ 689      70444D41 
+ 689      00
+ 690              	.LASF23:
+ 691 00eb 433A5C55 		.ascii	"C:\\Users\\Jonas\\Dropbox\\IRT PSoC4 solutions\\E4I"
+ 691      73657273 
+ 691      5C4A6F6E 
+ 691      61735C44 
+ 691      726F7062 
+ 692 0119 52545F45 		.ascii	"RT_EX6\\IRT_EX6_2\\IRT_EX6_2.cydsn\000"
+ 692      58365C49 
+ 692      52545F45 
+ 692      58365F32 
+ 692      5C495254 
+ 693              	.LASF16:
+ 694 013a 72656738 		.ascii	"reg8\000"
+ 694      00
+ 695              	.LASF18:
+ 696 013f 444D415F 		.ascii	"DMA_1_Chan\000"
+ 696      315F4368 
+ 696      616E00
+ 697              	.LASF14:
+ 698 014a 646F7562 		.ascii	"double\000"
+ 698      6C6500
+ 699              	.LASF4:
+ 700 0151 6C6F6E67 		.ascii	"long int\000"
+ 700      20696E74 
+ 700      00
+ 701              	.LASF20:
+ 702 015a 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 702      52784275 
+ 702      66666572 
+ 702      00
+ 703              	.LASF0:
+ 704 0167 7369676E 		.ascii	"signed char\000"
+ 704      65642063 
+ 704      68617200 
+ 705              	.LASF13:
+ 706 0173 666C6F61 		.ascii	"float\000"
+ 706      7400
+ 707              	.LASF2:
+ 708 0179 73686F72 		.ascii	"short int\000"
+ 708      7420696E 
+ 708      7400
+ 709              	.LASF11:
+ 710 0183 75696E74 		.ascii	"uint16\000"
+ 710      313600
+ 711              	.LASF9:
+ 712 018a 696E7433 		.ascii	"int32_t\000"
+ 712      325F7400 
+ 713              	.LASF17:
+ 714 0192 73697A65 		.ascii	"sizetype\000"
+ 714      74797065 
+ARM GAS  C:\Users\Jonas\AppData\Local\Temp\ccD5v1mD.s 			page 16
+
+
+ 714      00
+ 715              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br

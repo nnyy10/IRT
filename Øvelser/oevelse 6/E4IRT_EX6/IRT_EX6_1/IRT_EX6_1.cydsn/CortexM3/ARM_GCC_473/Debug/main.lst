@@ -1,0 +1,696 @@
+ARM GAS  C:\Users\Jonas\AppData\Local\Temp\cc8KIbiR.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"main.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.global	i
+  19              		.bss
+  20              		.type	i, %object
+  21              		.size	i, 1
+  22              	i:
+  23 0000 00       		.space	1
+  24              		.comm	result,1,1
+  25              		.section	.text.filterVDAC,"ax",%progbits
+  26              		.align	2
+  27              		.global	filterVDAC
+  28              		.thumb
+  29              		.thumb_func
+  30              		.type	filterVDAC, %function
+  31              	filterVDAC:
+  32              	.LFB56:
+  33              		.file 1 ".\\main.c"
+   1:.\main.c      **** /* ========================================
+   2:.\main.c      ****  *
+   3:.\main.c      ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\main.c      ****  * All Rights Reserved
+   5:.\main.c      ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\main.c      ****  *
+   7:.\main.c      ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\main.c      ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\main.c      ****  *
+  10:.\main.c      ****  * ========================================
+  11:.\main.c      **** */
+  12:.\main.c      **** #include <project.h>
+  13:.\main.c      **** 
+  14:.\main.c      **** uint8 i = 0; 
+  15:.\main.c      **** int8 result; 
+  16:.\main.c      **** 
+  17:.\main.c      **** CY_ISR(filterVDAC)
+  18:.\main.c      **** {
+  34              		.loc 1 18 0
+  35              		.cfi_startproc
+  36              		@ args = 0, pretend = 0, frame = 0
+  37              		@ frame_needed = 1, uses_anonymous_args = 0
+  38 0000 80B5     		push	{r7, lr}
+  39              	.LCFI0:
+ARM GAS  C:\Users\Jonas\AppData\Local\Temp\cc8KIbiR.s 			page 2
+
+
+  40              		.cfi_def_cfa_offset 8
+  41              		.cfi_offset 7, -8
+  42              		.cfi_offset 14, -4
+  43 0002 00AF     		add	r7, sp, #0
+  44              	.LCFI1:
+  45              		.cfi_def_cfa_register 7
+  19:.\main.c      ****     result = ADC_DelSig_1_GetResult8();
+  46              		.loc 1 19 0
+  47 0004 FFF7FEFF 		bl	ADC_DelSig_1_GetResult8
+  48 0008 0346     		mov	r3, r0
+  49 000a 1A46     		mov	r2, r3
+  50 000c 40F20003 		movw	r3, #:lower16:result
+  51 0010 C0F20003 		movt	r3, #:upper16:result
+  52 0014 1A70     		strb	r2, [r3, #0]
+  20:.\main.c      **** 	VDAC8_1_Data = (result + 128);
+  53              		.loc 1 20 0
+  54 0016 45F68333 		movw	r3, #23427
+  55 001a C4F20003 		movt	r3, 16384
+  56 001e 40F20002 		movw	r2, #:lower16:result
+  57 0022 C0F20002 		movt	r2, #:upper16:result
+  58 0026 1278     		ldrb	r2, [r2, #0]	@ zero_extendqisi2
+  59 0028 D2B2     		uxtb	r2, r2
+  60 002a A2F18002 		sub	r2, r2, #128
+  61 002e D2B2     		uxtb	r2, r2
+  62 0030 1A70     		strb	r2, [r3, #0]
+  21:.\main.c      ****     Diode_1_Write(i); 
+  63              		.loc 1 21 0
+  64 0032 40F20003 		movw	r3, #:lower16:i
+  65 0036 C0F20003 		movt	r3, #:upper16:i
+  66 003a 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+  67 003c 1846     		mov	r0, r3
+  68 003e FFF7FEFF 		bl	Diode_1_Write
+  22:.\main.c      ****     i = ~i; 
+  69              		.loc 1 22 0
+  70 0042 40F20003 		movw	r3, #:lower16:i
+  71 0046 C0F20003 		movt	r3, #:upper16:i
+  72 004a 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+  73 004c 6FEA0303 		mvn	r3, r3
+  74 0050 DAB2     		uxtb	r2, r3
+  75 0052 40F20003 		movw	r3, #:lower16:i
+  76 0056 C0F20003 		movt	r3, #:upper16:i
+  77 005a 1A70     		strb	r2, [r3, #0]
+  23:.\main.c      **** }
+  78              		.loc 1 23 0
+  79 005c 80BD     		pop	{r7, pc}
+  80              		.cfi_endproc
+  81              	.LFE56:
+  82              		.size	filterVDAC, .-filterVDAC
+  83 005e 00BF     		.section	.text.main,"ax",%progbits
+  84              		.align	2
+  85              		.global	main
+  86              		.thumb
+  87              		.thumb_func
+  88              		.type	main, %function
+  89              	main:
+  90              	.LFB57:
+  24:.\main.c      **** 
+ARM GAS  C:\Users\Jonas\AppData\Local\Temp\cc8KIbiR.s 			page 3
+
+
+  25:.\main.c      **** 
+  26:.\main.c      **** void main()
+  27:.\main.c      **** {
+  91              		.loc 1 27 0
+  92              		.cfi_startproc
+  93              		@ args = 0, pretend = 0, frame = 0
+  94              		@ frame_needed = 1, uses_anonymous_args = 0
+  95 0000 80B5     		push	{r7, lr}
+  96              	.LCFI2:
+  97              		.cfi_def_cfa_offset 8
+  98              		.cfi_offset 7, -8
+  99              		.cfi_offset 14, -4
+ 100 0002 00AF     		add	r7, sp, #0
+ 101              	.LCFI3:
+ 102              		.cfi_def_cfa_register 7
+  28:.\main.c      ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  29:.\main.c      **** 	Opamp_1_Start();
+ 103              		.loc 1 29 0
+ 104 0004 FFF7FEFF 		bl	Opamp_1_Start
+  30:.\main.c      **** 	Opamp_3_Start();
+ 105              		.loc 1 30 0
+ 106 0008 FFF7FEFF 		bl	Opamp_3_Start
+  31:.\main.c      ****     Clock_1_Start(); 
+ 107              		.loc 1 31 0
+ 108 000c FFF7FEFF 		bl	Clock_1_Start
+  32:.\main.c      **** 	ADC_DelSig_1_Start();
+ 109              		.loc 1 32 0
+ 110 0010 FFF7FEFF 		bl	ADC_DelSig_1_Start
+  33:.\main.c      **** 	ADC_DelSig_1_StartConvert();
+ 111              		.loc 1 33 0
+ 112 0014 FFF7FEFF 		bl	ADC_DelSig_1_StartConvert
+  34:.\main.c      **** 	VDAC8_1_Start();
+ 113              		.loc 1 34 0
+ 114 0018 FFF7FEFF 		bl	VDAC8_1_Start
+  35:.\main.c      **** 	VDAC8_2_Start();
+ 115              		.loc 1 35 0
+ 116 001c FFF7FEFF 		bl	VDAC8_2_Start
+  36:.\main.c      ****    
+  37:.\main.c      ****     CyGlobalIntEnable;  /* Uncomment this line to enable global interrupts. */
+ 117              		.loc 1 37 0
+ 118              	@ 37 ".\main.c" 1
+ 119 0020 62B6     		CPSIE   i
+ 120              	@ 0 "" 2
+  38:.\main.c      ****     
+  39:.\main.c      ****     isr_StartEx(filterVDAC);
+ 121              		.loc 1 39 0
+ 122              		.thumb
+ 123 0022 40F20000 		movw	r0, #:lower16:filterVDAC
+ 124 0026 C0F20000 		movt	r0, #:upper16:filterVDAC
+ 125 002a FFF7FEFF 		bl	isr_StartEx
+ 126              	.L3:
+  40:.\main.c      ****     for(;;)
+  41:.\main.c      ****     {
+  42:.\main.c      **** 		/* Place your application code here. */
+  43:.\main.c      **** 		
+  44:.\main.c      ****     }
+ 127              		.loc 1 44 0 discriminator 1
+ARM GAS  C:\Users\Jonas\AppData\Local\Temp\cc8KIbiR.s 			page 4
+
+
+ 128 002e FEE7     		b	.L3
+ 129              		.cfi_endproc
+ 130              	.LFE57:
+ 131              		.size	main, .-main
+ 132              		.text
+ 133              	.Letext0:
+ 134              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.0\\psoc creator\\import\\gnu_cs\\arm\\4
+ 135              		.file 3 "./Generated_Source/PSoC5/cytypes.h"
+ 136              		.file 4 "./Generated_Source/PSoC5/core_cm3.h"
+ 137              		.section	.debug_info,"",%progbits
+ 138              	.Ldebug_info0:
+ 139 0000 19010000 		.4byte	0x119
+ 140 0004 0200     		.2byte	0x2
+ 141 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 142 000a 04       		.byte	0x4
+ 143 000b 01       		.uleb128 0x1
+ 144 000c 38000000 		.4byte	.LASF19
+ 145 0010 01       		.byte	0x1
+ 146 0011 DA000000 		.4byte	.LASF20
+ 147 0015 24010000 		.4byte	.LASF21
+ 148 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 149 001d 00000000 		.4byte	0
+ 150 0021 00000000 		.4byte	0
+ 151 0025 00000000 		.4byte	.Ldebug_line0
+ 152 0029 02       		.uleb128 0x2
+ 153 002a 01       		.byte	0x1
+ 154 002b 06       		.byte	0x6
+ 155 002c 00010000 		.4byte	.LASF0
+ 156 0030 02       		.uleb128 0x2
+ 157 0031 01       		.byte	0x1
+ 158 0032 08       		.byte	0x8
+ 159 0033 BB000000 		.4byte	.LASF1
+ 160 0037 02       		.uleb128 0x2
+ 161 0038 02       		.byte	0x2
+ 162 0039 05       		.byte	0x5
+ 163 003a 12010000 		.4byte	.LASF2
+ 164 003e 02       		.uleb128 0x2
+ 165 003f 02       		.byte	0x2
+ 166 0040 07       		.byte	0x7
+ 167 0041 0E000000 		.4byte	.LASF3
+ 168 0045 03       		.uleb128 0x3
+ 169 0046 1C010000 		.4byte	.LASF9
+ 170 004a 02       		.byte	0x2
+ 171 004b 4F       		.byte	0x4f
+ 172 004c 50000000 		.4byte	0x50
+ 173 0050 02       		.uleb128 0x2
+ 174 0051 04       		.byte	0x4
+ 175 0052 05       		.byte	0x5
+ 176 0053 EA000000 		.4byte	.LASF4
+ 177 0057 02       		.uleb128 0x2
+ 178 0058 04       		.byte	0x4
+ 179 0059 07       		.byte	0x7
+ 180 005a 87000000 		.4byte	.LASF5
+ 181 005e 02       		.uleb128 0x2
+ 182 005f 08       		.byte	0x8
+ 183 0060 05       		.byte	0x5
+ 184 0061 00000000 		.4byte	.LASF6
+ARM GAS  C:\Users\Jonas\AppData\Local\Temp\cc8KIbiR.s 			page 5
+
+
+ 185 0065 02       		.uleb128 0x2
+ 186 0066 08       		.byte	0x8
+ 187 0067 07       		.byte	0x7
+ 188 0068 99000000 		.4byte	.LASF7
+ 189 006c 04       		.uleb128 0x4
+ 190 006d 04       		.byte	0x4
+ 191 006e 05       		.byte	0x5
+ 192 006f 696E7400 		.ascii	"int\000"
+ 193 0073 02       		.uleb128 0x2
+ 194 0074 04       		.byte	0x4
+ 195 0075 07       		.byte	0x7
+ 196 0076 21000000 		.4byte	.LASF8
+ 197 007a 03       		.uleb128 0x3
+ 198 007b 81000000 		.4byte	.LASF10
+ 199 007f 03       		.byte	0x3
+ 200 0080 5B       		.byte	0x5b
+ 201 0081 30000000 		.4byte	0x30
+ 202 0085 03       		.uleb128 0x3
+ 203 0086 33000000 		.4byte	.LASF11
+ 204 008a 03       		.byte	0x3
+ 205 008b 5E       		.byte	0x5e
+ 206 008c 29000000 		.4byte	0x29
+ 207 0090 02       		.uleb128 0x2
+ 208 0091 04       		.byte	0x4
+ 209 0092 04       		.byte	0x4
+ 210 0093 0C010000 		.4byte	.LASF12
+ 211 0097 02       		.uleb128 0x2
+ 212 0098 08       		.byte	0x8
+ 213 0099 04       		.byte	0x4
+ 214 009a E3000000 		.4byte	.LASF13
+ 215 009e 02       		.uleb128 0x2
+ 216 009f 01       		.byte	0x1
+ 217 00a0 08       		.byte	0x8
+ 218 00a1 C9000000 		.4byte	.LASF14
+ 219 00a5 03       		.uleb128 0x3
+ 220 00a6 D5000000 		.4byte	.LASF15
+ 221 00aa 03       		.byte	0x3
+ 222 00ab F0       		.byte	0xf0
+ 223 00ac B0000000 		.4byte	0xb0
+ 224 00b0 05       		.uleb128 0x5
+ 225 00b1 7A000000 		.4byte	0x7a
+ 226 00b5 02       		.uleb128 0x2
+ 227 00b6 04       		.byte	0x4
+ 228 00b7 07       		.byte	0x7
+ 229 00b8 73010000 		.4byte	.LASF16
+ 230 00bc 06       		.uleb128 0x6
+ 231 00bd 01       		.byte	0x1
+ 232 00be B0000000 		.4byte	.LASF22
+ 233 00c2 01       		.byte	0x1
+ 234 00c3 11       		.byte	0x11
+ 235 00c4 01       		.byte	0x1
+ 236 00c5 00000000 		.4byte	.LFB56
+ 237 00c9 5E000000 		.4byte	.LFE56
+ 238 00cd 00000000 		.4byte	.LLST0
+ 239 00d1 01       		.byte	0x1
+ 240 00d2 07       		.uleb128 0x7
+ 241 00d3 01       		.byte	0x1
+ARM GAS  C:\Users\Jonas\AppData\Local\Temp\cc8KIbiR.s 			page 6
+
+
+ 242 00d4 2E000000 		.4byte	.LASF23
+ 243 00d8 01       		.byte	0x1
+ 244 00d9 1A       		.byte	0x1a
+ 245 00da 00000000 		.4byte	.LFB57
+ 246 00de 30000000 		.4byte	.LFE57
+ 247 00e2 2C000000 		.4byte	.LLST1
+ 248 00e6 01       		.byte	0x1
+ 249 00e7 08       		.uleb128 0x8
+ 250 00e8 F3000000 		.4byte	.LASF17
+ 251 00ec 04       		.byte	0x4
+ 252 00ed 1606     		.2byte	0x616
+ 253 00ef F5000000 		.4byte	0xf5
+ 254 00f3 01       		.byte	0x1
+ 255 00f4 01       		.byte	0x1
+ 256 00f5 05       		.uleb128 0x5
+ 257 00f6 45000000 		.4byte	0x45
+ 258 00fa 09       		.uleb128 0x9
+ 259 00fb 6900     		.ascii	"i\000"
+ 260 00fd 01       		.byte	0x1
+ 261 00fe 0E       		.byte	0xe
+ 262 00ff 7A000000 		.4byte	0x7a
+ 263 0103 01       		.byte	0x1
+ 264 0104 05       		.byte	0x5
+ 265 0105 03       		.byte	0x3
+ 266 0106 00000000 		.4byte	i
+ 267 010a 0A       		.uleb128 0xa
+ 268 010b CE000000 		.4byte	.LASF18
+ 269 010f 01       		.byte	0x1
+ 270 0110 0F       		.byte	0xf
+ 271 0111 85000000 		.4byte	0x85
+ 272 0115 01       		.byte	0x1
+ 273 0116 05       		.byte	0x5
+ 274 0117 03       		.byte	0x3
+ 275 0118 00000000 		.4byte	result
+ 276 011c 00       		.byte	0
+ 277              		.section	.debug_abbrev,"",%progbits
+ 278              	.Ldebug_abbrev0:
+ 279 0000 01       		.uleb128 0x1
+ 280 0001 11       		.uleb128 0x11
+ 281 0002 01       		.byte	0x1
+ 282 0003 25       		.uleb128 0x25
+ 283 0004 0E       		.uleb128 0xe
+ 284 0005 13       		.uleb128 0x13
+ 285 0006 0B       		.uleb128 0xb
+ 286 0007 03       		.uleb128 0x3
+ 287 0008 0E       		.uleb128 0xe
+ 288 0009 1B       		.uleb128 0x1b
+ 289 000a 0E       		.uleb128 0xe
+ 290 000b 55       		.uleb128 0x55
+ 291 000c 06       		.uleb128 0x6
+ 292 000d 11       		.uleb128 0x11
+ 293 000e 01       		.uleb128 0x1
+ 294 000f 52       		.uleb128 0x52
+ 295 0010 01       		.uleb128 0x1
+ 296 0011 10       		.uleb128 0x10
+ 297 0012 06       		.uleb128 0x6
+ 298 0013 00       		.byte	0
+ARM GAS  C:\Users\Jonas\AppData\Local\Temp\cc8KIbiR.s 			page 7
+
+
+ 299 0014 00       		.byte	0
+ 300 0015 02       		.uleb128 0x2
+ 301 0016 24       		.uleb128 0x24
+ 302 0017 00       		.byte	0
+ 303 0018 0B       		.uleb128 0xb
+ 304 0019 0B       		.uleb128 0xb
+ 305 001a 3E       		.uleb128 0x3e
+ 306 001b 0B       		.uleb128 0xb
+ 307 001c 03       		.uleb128 0x3
+ 308 001d 0E       		.uleb128 0xe
+ 309 001e 00       		.byte	0
+ 310 001f 00       		.byte	0
+ 311 0020 03       		.uleb128 0x3
+ 312 0021 16       		.uleb128 0x16
+ 313 0022 00       		.byte	0
+ 314 0023 03       		.uleb128 0x3
+ 315 0024 0E       		.uleb128 0xe
+ 316 0025 3A       		.uleb128 0x3a
+ 317 0026 0B       		.uleb128 0xb
+ 318 0027 3B       		.uleb128 0x3b
+ 319 0028 0B       		.uleb128 0xb
+ 320 0029 49       		.uleb128 0x49
+ 321 002a 13       		.uleb128 0x13
+ 322 002b 00       		.byte	0
+ 323 002c 00       		.byte	0
+ 324 002d 04       		.uleb128 0x4
+ 325 002e 24       		.uleb128 0x24
+ 326 002f 00       		.byte	0
+ 327 0030 0B       		.uleb128 0xb
+ 328 0031 0B       		.uleb128 0xb
+ 329 0032 3E       		.uleb128 0x3e
+ 330 0033 0B       		.uleb128 0xb
+ 331 0034 03       		.uleb128 0x3
+ 332 0035 08       		.uleb128 0x8
+ 333 0036 00       		.byte	0
+ 334 0037 00       		.byte	0
+ 335 0038 05       		.uleb128 0x5
+ 336 0039 35       		.uleb128 0x35
+ 337 003a 00       		.byte	0
+ 338 003b 49       		.uleb128 0x49
+ 339 003c 13       		.uleb128 0x13
+ 340 003d 00       		.byte	0
+ 341 003e 00       		.byte	0
+ 342 003f 06       		.uleb128 0x6
+ 343 0040 2E       		.uleb128 0x2e
+ 344 0041 00       		.byte	0
+ 345 0042 3F       		.uleb128 0x3f
+ 346 0043 0C       		.uleb128 0xc
+ 347 0044 03       		.uleb128 0x3
+ 348 0045 0E       		.uleb128 0xe
+ 349 0046 3A       		.uleb128 0x3a
+ 350 0047 0B       		.uleb128 0xb
+ 351 0048 3B       		.uleb128 0x3b
+ 352 0049 0B       		.uleb128 0xb
+ 353 004a 27       		.uleb128 0x27
+ 354 004b 0C       		.uleb128 0xc
+ 355 004c 11       		.uleb128 0x11
+ARM GAS  C:\Users\Jonas\AppData\Local\Temp\cc8KIbiR.s 			page 8
+
+
+ 356 004d 01       		.uleb128 0x1
+ 357 004e 12       		.uleb128 0x12
+ 358 004f 01       		.uleb128 0x1
+ 359 0050 40       		.uleb128 0x40
+ 360 0051 06       		.uleb128 0x6
+ 361 0052 9642     		.uleb128 0x2116
+ 362 0054 0C       		.uleb128 0xc
+ 363 0055 00       		.byte	0
+ 364 0056 00       		.byte	0
+ 365 0057 07       		.uleb128 0x7
+ 366 0058 2E       		.uleb128 0x2e
+ 367 0059 00       		.byte	0
+ 368 005a 3F       		.uleb128 0x3f
+ 369 005b 0C       		.uleb128 0xc
+ 370 005c 03       		.uleb128 0x3
+ 371 005d 0E       		.uleb128 0xe
+ 372 005e 3A       		.uleb128 0x3a
+ 373 005f 0B       		.uleb128 0xb
+ 374 0060 3B       		.uleb128 0x3b
+ 375 0061 0B       		.uleb128 0xb
+ 376 0062 11       		.uleb128 0x11
+ 377 0063 01       		.uleb128 0x1
+ 378 0064 12       		.uleb128 0x12
+ 379 0065 01       		.uleb128 0x1
+ 380 0066 40       		.uleb128 0x40
+ 381 0067 06       		.uleb128 0x6
+ 382 0068 9642     		.uleb128 0x2116
+ 383 006a 0C       		.uleb128 0xc
+ 384 006b 00       		.byte	0
+ 385 006c 00       		.byte	0
+ 386 006d 08       		.uleb128 0x8
+ 387 006e 34       		.uleb128 0x34
+ 388 006f 00       		.byte	0
+ 389 0070 03       		.uleb128 0x3
+ 390 0071 0E       		.uleb128 0xe
+ 391 0072 3A       		.uleb128 0x3a
+ 392 0073 0B       		.uleb128 0xb
+ 393 0074 3B       		.uleb128 0x3b
+ 394 0075 05       		.uleb128 0x5
+ 395 0076 49       		.uleb128 0x49
+ 396 0077 13       		.uleb128 0x13
+ 397 0078 3F       		.uleb128 0x3f
+ 398 0079 0C       		.uleb128 0xc
+ 399 007a 3C       		.uleb128 0x3c
+ 400 007b 0C       		.uleb128 0xc
+ 401 007c 00       		.byte	0
+ 402 007d 00       		.byte	0
+ 403 007e 09       		.uleb128 0x9
+ 404 007f 34       		.uleb128 0x34
+ 405 0080 00       		.byte	0
+ 406 0081 03       		.uleb128 0x3
+ 407 0082 08       		.uleb128 0x8
+ 408 0083 3A       		.uleb128 0x3a
+ 409 0084 0B       		.uleb128 0xb
+ 410 0085 3B       		.uleb128 0x3b
+ 411 0086 0B       		.uleb128 0xb
+ 412 0087 49       		.uleb128 0x49
+ARM GAS  C:\Users\Jonas\AppData\Local\Temp\cc8KIbiR.s 			page 9
+
+
+ 413 0088 13       		.uleb128 0x13
+ 414 0089 3F       		.uleb128 0x3f
+ 415 008a 0C       		.uleb128 0xc
+ 416 008b 02       		.uleb128 0x2
+ 417 008c 0A       		.uleb128 0xa
+ 418 008d 00       		.byte	0
+ 419 008e 00       		.byte	0
+ 420 008f 0A       		.uleb128 0xa
+ 421 0090 34       		.uleb128 0x34
+ 422 0091 00       		.byte	0
+ 423 0092 03       		.uleb128 0x3
+ 424 0093 0E       		.uleb128 0xe
+ 425 0094 3A       		.uleb128 0x3a
+ 426 0095 0B       		.uleb128 0xb
+ 427 0096 3B       		.uleb128 0x3b
+ 428 0097 0B       		.uleb128 0xb
+ 429 0098 49       		.uleb128 0x49
+ 430 0099 13       		.uleb128 0x13
+ 431 009a 3F       		.uleb128 0x3f
+ 432 009b 0C       		.uleb128 0xc
+ 433 009c 02       		.uleb128 0x2
+ 434 009d 0A       		.uleb128 0xa
+ 435 009e 00       		.byte	0
+ 436 009f 00       		.byte	0
+ 437 00a0 00       		.byte	0
+ 438              		.section	.debug_loc,"",%progbits
+ 439              	.Ldebug_loc0:
+ 440              	.LLST0:
+ 441 0000 00000000 		.4byte	.LFB56
+ 442 0004 02000000 		.4byte	.LCFI0
+ 443 0008 0200     		.2byte	0x2
+ 444 000a 7D       		.byte	0x7d
+ 445 000b 00       		.sleb128 0
+ 446 000c 02000000 		.4byte	.LCFI0
+ 447 0010 04000000 		.4byte	.LCFI1
+ 448 0014 0200     		.2byte	0x2
+ 449 0016 7D       		.byte	0x7d
+ 450 0017 08       		.sleb128 8
+ 451 0018 04000000 		.4byte	.LCFI1
+ 452 001c 5E000000 		.4byte	.LFE56
+ 453 0020 0200     		.2byte	0x2
+ 454 0022 77       		.byte	0x77
+ 455 0023 08       		.sleb128 8
+ 456 0024 00000000 		.4byte	0
+ 457 0028 00000000 		.4byte	0
+ 458              	.LLST1:
+ 459 002c 00000000 		.4byte	.LFB57
+ 460 0030 02000000 		.4byte	.LCFI2
+ 461 0034 0200     		.2byte	0x2
+ 462 0036 7D       		.byte	0x7d
+ 463 0037 00       		.sleb128 0
+ 464 0038 02000000 		.4byte	.LCFI2
+ 465 003c 04000000 		.4byte	.LCFI3
+ 466 0040 0200     		.2byte	0x2
+ 467 0042 7D       		.byte	0x7d
+ 468 0043 08       		.sleb128 8
+ 469 0044 04000000 		.4byte	.LCFI3
+ARM GAS  C:\Users\Jonas\AppData\Local\Temp\cc8KIbiR.s 			page 10
+
+
+ 470 0048 30000000 		.4byte	.LFE57
+ 471 004c 0200     		.2byte	0x2
+ 472 004e 77       		.byte	0x77
+ 473 004f 08       		.sleb128 8
+ 474 0050 00000000 		.4byte	0
+ 475 0054 00000000 		.4byte	0
+ 476              		.section	.debug_aranges,"",%progbits
+ 477 0000 24000000 		.4byte	0x24
+ 478 0004 0200     		.2byte	0x2
+ 479 0006 00000000 		.4byte	.Ldebug_info0
+ 480 000a 04       		.byte	0x4
+ 481 000b 00       		.byte	0
+ 482 000c 0000     		.2byte	0
+ 483 000e 0000     		.2byte	0
+ 484 0010 00000000 		.4byte	.LFB56
+ 485 0014 5E000000 		.4byte	.LFE56-.LFB56
+ 486 0018 00000000 		.4byte	.LFB57
+ 487 001c 30000000 		.4byte	.LFE57-.LFB57
+ 488 0020 00000000 		.4byte	0
+ 489 0024 00000000 		.4byte	0
+ 490              		.section	.debug_ranges,"",%progbits
+ 491              	.Ldebug_ranges0:
+ 492 0000 00000000 		.4byte	.LFB56
+ 493 0004 5E000000 		.4byte	.LFE56
+ 494 0008 00000000 		.4byte	.LFB57
+ 495 000c 30000000 		.4byte	.LFE57
+ 496 0010 00000000 		.4byte	0
+ 497 0014 00000000 		.4byte	0
+ 498              		.section	.debug_line,"",%progbits
+ 499              	.Ldebug_line0:
+ 500 0000 30010000 		.section	.debug_str,"MS",%progbits,1
+ 500      0200F900 
+ 500      00000201 
+ 500      FB0E0D00 
+ 500      01010101 
+ 501              	.LASF6:
+ 502 0000 6C6F6E67 		.ascii	"long long int\000"
+ 502      206C6F6E 
+ 502      6720696E 
+ 502      7400
+ 503              	.LASF3:
+ 504 000e 73686F72 		.ascii	"short unsigned int\000"
+ 504      7420756E 
+ 504      7369676E 
+ 504      65642069 
+ 504      6E7400
+ 505              	.LASF8:
+ 506 0021 756E7369 		.ascii	"unsigned int\000"
+ 506      676E6564 
+ 506      20696E74 
+ 506      00
+ 507              	.LASF23:
+ 508 002e 6D61696E 		.ascii	"main\000"
+ 508      00
+ 509              	.LASF11:
+ 510 0033 696E7438 		.ascii	"int8\000"
+ 510      00
+ARM GAS  C:\Users\Jonas\AppData\Local\Temp\cc8KIbiR.s 			page 11
+
+
+ 511              	.LASF19:
+ 512 0038 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 512      4320342E 
+ 512      372E3320 
+ 512      32303133 
+ 512      30333132 
+ 513 006b 616E6368 		.ascii	"anch revision 196615]\000"
+ 513      20726576 
+ 513      6973696F 
+ 513      6E203139 
+ 513      36363135 
+ 514              	.LASF10:
+ 515 0081 75696E74 		.ascii	"uint8\000"
+ 515      3800
+ 516              	.LASF5:
+ 517 0087 6C6F6E67 		.ascii	"long unsigned int\000"
+ 517      20756E73 
+ 517      69676E65 
+ 517      6420696E 
+ 517      7400
+ 518              	.LASF7:
+ 519 0099 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 519      206C6F6E 
+ 519      6720756E 
+ 519      7369676E 
+ 519      65642069 
+ 520              	.LASF22:
+ 521 00b0 66696C74 		.ascii	"filterVDAC\000"
+ 521      65725644 
+ 521      414300
+ 522              	.LASF1:
+ 523 00bb 756E7369 		.ascii	"unsigned char\000"
+ 523      676E6564 
+ 523      20636861 
+ 523      7200
+ 524              	.LASF14:
+ 525 00c9 63686172 		.ascii	"char\000"
+ 525      00
+ 526              	.LASF18:
+ 527 00ce 72657375 		.ascii	"result\000"
+ 527      6C7400
+ 528              	.LASF15:
+ 529 00d5 72656738 		.ascii	"reg8\000"
+ 529      00
+ 530              	.LASF20:
+ 531 00da 2E5C6D61 		.ascii	".\\main.c\000"
+ 531      696E2E63 
+ 531      00
+ 532              	.LASF13:
+ 533 00e3 646F7562 		.ascii	"double\000"
+ 533      6C6500
+ 534              	.LASF4:
+ 535 00ea 6C6F6E67 		.ascii	"long int\000"
+ 535      20696E74 
+ 535      00
+ 536              	.LASF17:
+ 537 00f3 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ARM GAS  C:\Users\Jonas\AppData\Local\Temp\cc8KIbiR.s 			page 12
+
+
+ 537      52784275 
+ 537      66666572 
+ 537      00
+ 538              	.LASF0:
+ 539 0100 7369676E 		.ascii	"signed char\000"
+ 539      65642063 
+ 539      68617200 
+ 540              	.LASF12:
+ 541 010c 666C6F61 		.ascii	"float\000"
+ 541      7400
+ 542              	.LASF2:
+ 543 0112 73686F72 		.ascii	"short int\000"
+ 543      7420696E 
+ 543      7400
+ 544              	.LASF9:
+ 545 011c 696E7433 		.ascii	"int32_t\000"
+ 545      325F7400 
+ 546              	.LASF21:
+ 547 0124 433A5C55 		.ascii	"C:\\Users\\Jonas\\Dropbox\\IRT PSoC4 solutions\\E4I"
+ 547      73657273 
+ 547      5C4A6F6E 
+ 547      61735C44 
+ 547      726F7062 
+ 548 0152 52545F45 		.ascii	"RT_EX6\\IRT_EX6_1\\IRT_EX6_1.cydsn\000"
+ 548      58365C49 
+ 548      52545F45 
+ 548      58365F31 
+ 548      5C495254 
+ 549              	.LASF16:
+ 550 0173 73697A65 		.ascii	"sizetype\000"
+ 550      74797065 
+ 550      00
+ 551              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br
