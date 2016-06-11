@@ -26,3 +26,9 @@ step(T_closed_maeling)
 legend('Teoretisk','Open-loop Måling','Closed-loop Måling');
 
 
+%% step
+figure
+step(feedback(T_teoretisk,1));
+
+figure
+step(T_teoretisk/s)
