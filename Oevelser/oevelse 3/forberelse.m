@@ -9,14 +9,14 @@ G=50000/((s+50)*(s+1000));
 
 bode(G)
 
-P_OS=0.05;
-zeta=-log(P_OS)/(pi^2+log(P_OS)^2)^0.5;
-phi_m=atan(2*zeta/(-2*zeta^2+(1+4*zeta^4)^0.5)^0.5);
-theta_m=phi_m*360/(2*pi);
+P_OS_5=0.05;
+zeta_5=-log(P_OS_5)/(pi^2+log(P_OS_5)^2)^0.5;
+phi_m_5=atan(2*zeta_5/(-2*zeta_5^2+(1+4*zeta_5^4)^0.5)^0.5);
+theta_m_5=phi_m_5*360/(2*pi);
 
 %22.4dB skal haves via kp
 
-kp_5=10^(22.4/20);
+kp_5=10^(22.9/20);
 
 G=50000*kp_5/((s+50)*(s+1000));
 
@@ -45,10 +45,10 @@ bode(G)
 %(samme båndbredde). Bestem systemets stationære fejl og opvoksningstiden.
 %Eftervis resultatet i Matlab.
 
-P_OS=0.3;
-zeta=-log(P_OS)/(pi^2+log(P_OS)^2)^0.5;
-phi_m=atan(2*zeta/(-2*zeta^2+(1+4*zeta^4)^0.5)^0.5);
-theta_m=phi_m*360/(2*pi);
+P_OS_30=0.3;
+zeta_30=-log(P_OS_30)/(pi^2+log(P_OS_30)^2)^0.5;
+phi_m_30=atan(2*zeta_30/(-2*zeta_30^2+(1+4*zeta_30^4)^0.5)^0.5);
+theta_m_30=phi_m_30*360/(2*pi);
 
 %33dB skal haves via kp
 
@@ -58,10 +58,11 @@ G=50000*kp_30/((s+50)*(s+1000));
 
 bode(G)
 
+step(feedback(G,1))
 %??m=1330rad/s
 %?m=39
 
-theta_m_plus=66+7-39;
+theta_m_plus=64.6+7-39.1;
 phi_m_plus=theta_m_plus*2*pi/360;
 
 beta=(1-sin(phi_m_plus))/(1+phi_m_plus);
@@ -72,7 +73,7 @@ G_lead=1/beta*(s+1/T_lead)/(s+1/(beta*T_lead));
 
 bode(G_lead*G)
 
-kc=1/(10^(4.45/20));
+kc=1/(10^(5.37/20));
 
 G_lead=kc/beta*(s+1/T_lead)/(s+1/(beta*T_lead));
 
@@ -82,11 +83,13 @@ stationaer_fejl=0.964;
 omega_phase_m=1330;
 
 T_lag=10/omega_phase_m;
-alpha= 1/stationaer_fejl;
+alpha= 26;
 
-G_lag=(s+1/T_lag)/(s+1/(alpha*T_lag));
+G_lag=(s+(1/T_lag))/(s+(1/(alpha*T_lag)));
 
+bode(G_lag)
 step(feedback(G_lead*G*G_lag,1))
+
 
 
 %1+(TD*S/(TL*S+1)) = 1+TD*S
