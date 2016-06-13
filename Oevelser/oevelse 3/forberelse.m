@@ -83,7 +83,7 @@ stationaer_fejl=0.964;
 omega_phase_m=1330;
 
 T_lag=10/omega_phase_m;
-alpha= 26;
+alpha= 44;
 
 G_lag=(s+(1/T_lag))/(s+(1/(alpha*T_lag)));
 
