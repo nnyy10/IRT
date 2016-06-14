@@ -48,7 +48,9 @@ Gc=40*((s+10)/s);
 G1=Gc*Gm*K_PA*(1/s)*(1/N)*K_POT;
 
 figure(3)
-step(feedback(G1,1))
+step(feedback(G1,1), 'b')
+hold on
+step(feedback(G,1), 'r')
 Ramp=1/s;
 
 figure(4)

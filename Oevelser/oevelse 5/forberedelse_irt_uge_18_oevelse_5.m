@@ -145,10 +145,15 @@ G_0_max_d10=c2d(G_delay*G_s,Tmax_d10,'zoh');
 
 figure
 step(feedback(G_lead_z_max,G_0_max))
+title('Step Response - Output of Lead-regulator / Input of Process')
 figure
 step(feedback(G_lead_z_max*G_0_max,1))
+title('Step Response - Output of whole system')
 
 figure
 step(feedback(G_lead_z_max_d10,G_0_max_d10))
+title('Step Response - Output of Lead-regulator / Input of Process')
 figure
 step(feedback(G_lead_z_max_d10*G_0_max_d10,1))
+title('Step Response - Output of whole system')
+

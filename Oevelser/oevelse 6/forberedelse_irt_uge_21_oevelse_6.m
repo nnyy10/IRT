@@ -47,7 +47,10 @@ Td = 0.0008;
 G_delay=tf(num,den);        %making the delay transfer function
 
 figure
-bode(G_delay)
+bode(G_s, 'r')
+hold on
+bode(G_delay*G_s, 'b')
+legend('Before','After')
 
 figure
 bode(G_delay*G_s)

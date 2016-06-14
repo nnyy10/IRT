@@ -30,17 +30,19 @@ G_samlet_med_lead = G_samlet*G_lead;
 G_samlet_uden_lead = G_samlet;
 
 figure(6)
-subplot(2,1,1);
 step(feedback(G_samlet_uden_lead,1));
-subplot(2,1,2);
+hold on
 step(feedback(G_samlet_med_lead,1));
 
-figure(7)
+figure
 ramp = 0.4/s;
-subplot(2,1,1);
-step(ramp*feedback(G_samlet_uden_lead,1),ramp);
-subplot(2,1,2);
-step(ramp*feedback(G_samlet_med_lead,1),ramp);
+step(ramp*feedback(G_samlet_uden_lead,1), 'r');
+hold on
+step(ramp*feedback(G_samlet_med_lead,1), 'b');
+hold on
+step(ramp, 'k')
+legend('Uden lead', 'Med lead', 'input')
+
 
 
 % forklar forløbet
