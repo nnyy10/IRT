@@ -45,9 +45,6 @@ G_z_zoh1=c2d(G_s,Ts1,'zoh');
 G_z_zoh2=c2d(G_s,Ts2,'zoh');
 G_z_zoh3=c2d(G_s,Ts3,'zoh');
 
-G_z_tus1=c2d(G_s,Ts1,'tustin');
-G_z_tus2=c2d(G_s,Ts2,'tustin');
-G_z_tus3=c2d(G_s,Ts3,'tustin');
 
 figure
 step(feedback(G_z_zoh1*K_p,1),'r')  %why can we only multiply it here and not the original 
@@ -55,13 +52,6 @@ hold on
 step(feedback(G_z_zoh2*K_p,1),'g')
 hold on
 step(feedback(G_z_zoh3*K_p,1),'b')
-
-figure
-step(feedback(G_z_tus1*K_p,1),'r')  %why can we only multiply it here and not the original 
-hold on
-step(feedback(G_z_tus2*K_p,1),'g')
-hold on
-step(feedback(G_z_tus3*K_p,1),'b')
 
 %% EX2
 %2.	Vi vil efterfølgende forestille os, at der sammen med Blackbox-processen 
@@ -79,6 +69,9 @@ bode(G_delay)
 
 figure
 bode(G_delay*G_s*K_p)
+
+figure
+bode(G_s*K_p)
 
 figure
 step(feedback(G_delay*G_s*K_p,1))
@@ -153,4 +146,9 @@ G_0_max_d10=c2d(G_delay*G_s,Tmax_d10,'zoh');
 figure
 step(feedback(G_lead_z_max,G_0_max))
 figure
+step(feedback(G_lead_z_max*G_0_max,1))
+
+figure
 step(feedback(G_lead_z_max_d10,G_0_max_d10))
+figure
+step(feedback(G_lead_z_max_d10*G_0_max_d10,1))
