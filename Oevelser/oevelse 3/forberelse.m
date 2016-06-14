@@ -89,6 +89,7 @@ G_lag=(s+(1/T_lag))/(s+(1/(alpha*T_lag)));
 
 bode(G_lag)
 step(feedback(G_lead*G*G_lag,1))
+bode(G_lead*G*G_lag)
 
 
 
@@ -98,5 +99,7 @@ step(feedback(G_lead*G*G_lag,1))
 %1b kp0.05=11
 %1c kp0.3=41.5
 
+bode(G_lead*G_lag*G,G,G_lead,G_lag)
 
+step(feedback(G*G_lag,1))
 
